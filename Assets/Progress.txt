@@ -1,0 +1,60 @@
+
+Polish/bugfixes:
+
+Hussam:
+Dungeon
+Gui
+Scalar don't destroy on scene transition. 
+
+Jon: 
+Teleportation Bug
+Scalar
+
+Alex 
+
+
+
+
+Must be finished. 
+
+Hussam:
+Player Healthbar 
+Npcs 
+
+
+Jon:
+Fill in world with cool stuff preferably pirate theme. 
+Expand playerstats such that we can add new functionaltity (potions/powerups)
+
+Alex:
+Bosses
+Potions
+Chests 
+Well of regeneration
+
+Slutt rapport:
+Hver av oss må skrive:
+	Hva har vi lært?
+	Hvordan ville vi ha gjort ting anderledes.
+	Konklusjon. 
+
+Presentasjon:
+PPT. 
+Licenses.
+
+
+
+
+
+Stretch goals:
+
+Inventory.
+
+Splash screen for leveling up. 
+
+Tutorial keyboard screen. 
+
+Fog of war. 
+
+Power ups.[Done by Alex]
+

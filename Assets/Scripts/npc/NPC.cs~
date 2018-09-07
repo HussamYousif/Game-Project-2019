@@ -1,0 +1,90 @@
+﻿    using System.CodeDom;
+    using UnityEngine;
+    using System.Collections;
+    using UnityEditor;
+    using UnityEngine.UI;
+
+    public class NPC : MonoBehaviour {
+
+    public string[] dialogOne;  
+	public string[] dialogTwo; // Something the character says after the important part. "We've already talked", "Didn't I tell you to kill x of y... " etc. 
+    public string inputKey;
+
+	private GameObject GameGui;
+	private GameObject Dialog;
+    private Text UItext;
+
+    private int current;
+	private int lastLine;
+    private bool hasTalked;
+	private bool isTalking;
+
+	private GameObject Player;
+	private PlayerMovement PMovement; // PlayerMovement
+
+
+    // Use this for initialization
+    void Start ()
+    {
+		GameGui = GameObject.Find ("GameGui");
+		Dialog = GameGui.GameObject.Find ("Dialog");
+		UItext = Dialog.GetComponent<Text> ();
+		Player = GameObject.FindGameObjectWithTag ("Player");
+		PMovement = Player.GetComponent<PlayerMovement> ();
+
+		Dialog.SetActive (false);
+
+        hasTalked = false;
+		current = 0;
+		lastLine = dialogOne.Length - 1;
+
+        UItext.text = dialogOne[current];
+    }
+	
+    // Update is called once per frame
+    void Update () {
+
+		if (current == lastLine) {
+			HasTalked();
+		}
+    }
+
+	void HasTalked() {
+		hasTalked = true;
+		dialogOne = dialogTwo;
+		lastLine = dialogOne.Length;
+		current = 0;
+	}
+
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        current = 0;
+    }
+
+	void Talk() {
+		if (Input.GetKeyDown((inputKey)))
+		{
+            print("Pressed Input Key");
+			Dialog.SetActive(true);
+			if(current < dialogOne.Length)
+			{
+				UItext.text = dialogOne[current];
+			}
+			/*if (current >= lastLine+1;)
+			{
+				UItext.text = "";
+			}*/
+			current++;
+			
+		}
+	}
+
+    void OnTriggerStay2D(Collider2D coll)
+    {
+		while(current < lastLine)
+			Talk ();
+
+		Dialog.SetActive (false);
+        
+    }
+}
